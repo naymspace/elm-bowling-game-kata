@@ -5,7 +5,7 @@ This is an adaption of [Uncle Bob's Bowling Game Kata](http://butunclebob.com/Ar
 ## Doing The Kata
 
 * Familiarize with the [scoring of bowling](https://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring).
-* Make `elm test` pass by implementing `Game.score` to pass the test in `src/Game.elm`.
+* Make `elm test` pass by implementing `score` in `src/Game.elm`.
 * Uncomment the next scoring-test in `tests/GameTests.elm`.
 * Repeat
 
