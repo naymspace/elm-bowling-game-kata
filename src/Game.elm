@@ -17,23 +17,24 @@ score =
 scoreFrame : Game -> ( Score, Game )
 scoreFrame rolls =
     case rolls of
-        x1 :: x2 :: x3 :: xs ->
-            if x1 == 10 then
-                ( x1 + x2 + x3, x2 :: x3 :: xs )
-            else if x1 + x2 == 10 then
-                ( x1 + x2 + x3, x3 :: xs )
-            else
-                ( x1 + x2, x3 :: xs )
+        -- strike
+        10 :: ((x2 :: x3 :: xs) as remainingRolls) ->
+            ( 10 + x2 + x3, remainingRolls )
 
-        {- last two throws of a normal game -}
-        [ x1, x2 ] ->
-            ( x1 + x2, [] )
+        -- spare or open frame
+        x1 :: x2 :: ((x3 :: xs) as remainingRolls) ->
+            let
+                bonus =
+                    if x1 + x2 == 10 then
+                        x3
+                    else
+                        0
+            in
+                ( x1 + x2 + bonus, remainingRolls )
 
-        [ x ] ->
-            ( x, [] )
-
-        [] ->
-            ( 0, [] )
+        -- the last frame
+        xs ->
+            ( List.sum xs, [] )
 
 
 reduce : Game -> List Score
