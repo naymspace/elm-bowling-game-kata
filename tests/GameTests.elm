@@ -4,8 +4,6 @@ import Expect
 import Fuzz exposing (Fuzzer, intRange, list)
 import Game exposing (Game, Score, score)
 import List exposing (repeat)
-import Random.Pcg as Random
-import Shrink
 import Test exposing (Test, describe, fuzz, test)
 
 
